@@ -1,0 +1,45 @@
+---
+- name: Configure Windows Workstation
+  hosts: all
+  tasks:
+
+    - name: Install All the Things
+      win_chocolatey:
+        name: '{{ item }}'
+        state: latest
+      loop:
+        #- atmel-studio
+        - audacity
+        - arduino
+        - autodesk-fusion360
+        #- autodesk-meshmixer
+        - blender
+        - cura-new
+        - fritzing
+        - gimp
+        - firefox
+        - inkscape
+        - meshlab
+        - meshroom
+        - openscad
+        - sketchup
+        - slic3r
+        #- wsl-ubuntu-1804
+        #- unrealgameslauncher
+
+    - name: Reboot to apply changes
+      win_reboot:
+        reboot_timeout: 3600
+
+# not supported by chocolatey?
+
+ # - solidworks
+ # - tinkercad, onshape, easel (browser?)
+ # - davinci resolve
+ # - sophie sew
+ # -  mosaic palette
+ # - deep nest
+ # - 3dto2d
+ # - sketch chair
+ # - seamly
+ #- my editor
